@@ -1,0 +1,19 @@
+# Archivos y carpetas generados por Django
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyi
+*.egg-info/
+dist/
+build/
+*.egg
+*.log
+
+# Archivos y carpetas generados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos y carpetas generados por el editor de texto
+.vscode/
+*.code-workspace
