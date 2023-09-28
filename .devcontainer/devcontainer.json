@@ -1,0 +1,21 @@
+
+{
+    //Imagen base de desarrollo 
+    "name": "Python-Django en Codeespace",
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    //Personalización del editor
+    "customizations": {
+        "vscode": {
+            //lista de extensiones requeridas
+            "extensions": [
+                "GitHub.copilot",
+                "GitHub.copilot-Labs",
+                "ms-dotnettools.csharp",
+                "GitHub.copilot-chat"
+            ]
+        }
+    },
+    //Lista de comandos a ejecutar en la creación del contenedor
+    "postCreateCommand": "pip install Django"
+    
+}
