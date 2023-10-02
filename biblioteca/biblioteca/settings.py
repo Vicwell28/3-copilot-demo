@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from pyodbc import connect
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "catalogo_libros.apps.CatalogoLibrosConfig",
+    
 ]
 
 MIDDLEWARE = [
@@ -75,10 +77,17 @@ WSGI_APPLICATION = "biblioteca.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': {
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'biblioteca',
+        'USER': 'admin-demo',
+        'PASSWORD': 'GitHubC0p1L0T_4dM1N',
+        'HOST': 'demo-copilot.database.windows.net',
+        'PORT': '',
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+        },
+    },
 }
 
 
@@ -122,3 +131,18 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+def conectar():
+    """
+    Conecta a la base de datos de la biblioteca utilizando los parámetros de conexión especificados en la función.
+    
+    Returns:
+    cnxn: objeto de conexión a la base de datos
+    """
+    server = 'demo-copilot.database.windows.net'
+    database = 'biblioteca'
+    username = 'admin-demo'
+    password = 'GitHubC0p1L0T_4dM1N'
+    driver = '{ODBC Driver 17 for SQL Server}' # Este es el driver para SQL Server 2019. Si estás usando una versión diferente, debes cambiarlo.
+    cnxn = connect(f"DRIVER={driver};SERVER={server};DATABASE={database};UID={username};PWD={password}")
+    return cnxn
