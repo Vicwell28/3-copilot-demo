@@ -1,0 +1,51 @@
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #1815a8;
+    }
+    th {
+        background-color: #d5dfe7;
+    }
+    @media screen and (max-width: 600px) {
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+        th {
+            text-align: center;
+        }
+        td {
+            text-align: center;
+            border-bottom: none;
+        }
+        td:before {
+            content: attr(data-label);
+            float: left;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Editorial</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for libro in libros %}
+            <tr>
+                <td data-label="Título">{{ libro.titulo }}</td>
+                <td data-label="Descripción">{{ libro.descripcion }}</td>
+                <td data-label="Editorial">{{ libro.editorial }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
