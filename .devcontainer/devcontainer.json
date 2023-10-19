@@ -11,11 +11,12 @@
                 "GitHub.copilot",
                 "GitHub.copilot-Labs",
                 "ms-dotnettools.csharp",
-                "GitHub.copilot-chat"
+                "GitHub.copilot-chat",
+                "ms-python.python"
             ]
         }
     },
     //Lista de comandos a ejecutar en la creación del contenedor
-    "postCreateCommand": "pip install Django"
+    "postCreateCommand": "apt-get update && pip install Django && sudo apt-get install msodbcsql17 && pip install pyodbc"
     
 }
