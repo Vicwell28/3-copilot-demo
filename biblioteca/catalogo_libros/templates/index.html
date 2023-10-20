@@ -1,5 +1,5 @@
 <style>
-    table {
+    table { 
         width: 100%;
         border-collapse: collapse;
     }
@@ -30,22 +30,32 @@
         }
     }
 </style>
-
-<table>
-    <thead>
-        <tr>
-            <th>Título</th>
-            <th>Descripción</th>
-            <th>Editorial</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for libro in libros %}
+{% block content %}
+    <h1>Listado de libros</h1>
+    <a href="{% url 'crear_libro' %}">Crear libro</a>
+    <table>
+        <thead>
             <tr>
-                <td data-label="Título">{{ libro.titulo }}</td>
-                <td data-label="Descripción">{{ libro.descripcion }}</td>
-                <td data-label="Editorial">{{ libro.editorial }}</td>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Año</th>
+                <th>Editorial</th>
+                <th>Acciones</th>
             </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% for libro in libros %}
+                <tr>
+                    <td>{{ libro.titulo }}</td>
+                    <td>{{ libro.descripcion }}</td>
+                    <td>{{ libro.anio }}</td>
+                    <td>{{ libro.editorial }}</td>
+                    <td>
+                        <a href="{% url 'editar_libro' libro.id %}">Editar</a>
+                        <a href="{% url 'eliminar_libro' libro.id %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

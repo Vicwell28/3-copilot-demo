@@ -1,0 +1,21 @@
+
+{% block content %}
+    <h1>Editar libro</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="titulo">Título:</label>
+        <input type="text" name="titulo" id="titulo" value="{{ libro.titulo }}">
+        <br>
+        <label for="descripcion">Descripción:</label>
+        <textarea name="descripcion" id="descripcion">{{ libro.descripcion }}</textarea>
+        <br>
+        <label for="editorial">Editorial:</label>
+        <input type="text" name="editorial" id="editorial" value="{{ libro.editorial }}">
+        <br>
+        <br>
+        <label for="anio">Año:</label>
+        <input type="text" name="anio" id="anio" value="{{ libro.anio }}">
+        <br>
+        <input type="submit" value="Guardar">
+    </form>
+{% endblock %}
