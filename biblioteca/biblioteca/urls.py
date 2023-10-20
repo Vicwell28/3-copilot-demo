@@ -20,9 +20,13 @@ from django.urls import include
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+#Para importar las vistas de la aplicación catalogo_libros
+from catalogo_libros import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+   path('admin/', admin.site.urls),
+   ##Para mostrar el index de libros de manera predeterminada
+   path('', views.index, name='index'),
     path('catalogo_libros/', include('catalogo_libros.urls')),
     path('/', RedirectView.as_view(url='catalogo_libros/', permanent=True)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
